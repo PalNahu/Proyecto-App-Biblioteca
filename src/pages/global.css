@@ -1,0 +1,22 @@
+
+.container{
+    background-color: #FFF;
+    border-radius: 1rem;
+    padding: 5rem;
+    margin-top: 2rem;
+    height: 40rem;
+}
+
+.form-component{
+    margin-top: 1rem;
+    min-width: 300px;
+}
+
+.container-form{
+    margin: auto;
+}
+
+.button-submit{
+    margin-top: 1rem;
+    width: 100%;
+}
