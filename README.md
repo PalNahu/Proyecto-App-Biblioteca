@@ -1,8 +1,15 @@
-# React + Vite
+App Library Proyect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+In this repository you will find an library app where the user with his favorites book's genres can obtain an personalized catalog. A peraonalizes catalog will show with the filters (book's genres) chosen! A sinopsis of each book will apear too. 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Technologies:
+Vite
+React
+Javascript
+CSS
+NEXTUI
+Tailwind
+bootstrap
+
+unfinished project, changes may be made.
