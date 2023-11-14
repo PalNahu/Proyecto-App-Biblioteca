@@ -35,6 +35,7 @@ export const SharedNavbar = () => {
             </Button>
           </NavbarItem>
         </NavbarContent>
+        
       </Navbar>
   )
 }

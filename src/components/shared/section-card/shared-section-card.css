@@ -1,0 +1,14 @@
+.section-container {
+    /* background-color: #F5F6F8; */
+    margin-bottom: 3rem;
+    /* border-radius: 1rem; */
+}
+
+.section-title {
+    color: #000;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.08px;
+}
