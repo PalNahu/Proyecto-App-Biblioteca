@@ -1,4 +1,9 @@
 
 .container-navbar{
     border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.isActiveFontColor{
+    color: #0d6efd!important;
 }

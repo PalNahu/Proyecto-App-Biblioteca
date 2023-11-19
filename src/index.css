@@ -9,3 +9,17 @@ html, body {
   height: auto;
   background: #F5F6F8;
 }
+
+/* Estilo minimalista para navegadores WebKit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho del scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6262627b; /* Color del thumb (barra deslizadora) */
+  border-radius: 4px; /* Borde redondeado del thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color del track (fondo del scrollbar) */
+}

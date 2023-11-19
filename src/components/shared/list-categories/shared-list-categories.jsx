@@ -70,7 +70,6 @@ export const SharedListCategories = () => {
                     </li>
                 </ul>
             </div>
-
         </>
     )
 }
