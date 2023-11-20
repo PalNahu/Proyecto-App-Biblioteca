@@ -4,9 +4,6 @@ import {
   BrowserRouter as Router, Routes,
 
 } from "react-router-dom";
-import { Login } from '../pages/auth/login/login';
-import { Register } from '../pages/auth/register/register';
-import { Principal } from '../pages/core/principal/principal';
 import { SharedNavbar } from '../components/shared/navbar/shared-navbar';
 import { CircularProgress } from '@nextui-org/react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -52,7 +49,7 @@ export const AppRouter = () => {
             : null
             }
                
-               <Route path="/*" element={<AppBibliotecaRoutes />} />
+            <Route path="/*" element={<AppBibliotecaRoutes />} />
           
         </Routes>
 

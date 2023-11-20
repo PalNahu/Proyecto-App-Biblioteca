@@ -1,0 +1,12 @@
+.containerBook{
+    background-color: #FFF;
+    border-radius: 1rem;
+    padding: 5rem;
+}
+.simpleCardBook{
+    padding: 2rem;
+}
+
+.bookSinopsis{
+    padding: 2rem;
+}
