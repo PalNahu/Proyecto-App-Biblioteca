@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button } from "@nextui-org/react";
 import { Link } from 'react-router-dom';
 
-
 export const SharedNavbar = () => {
 
   const listItem = [

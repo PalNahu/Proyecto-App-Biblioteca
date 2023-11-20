@@ -8,7 +8,8 @@ import { Login } from '../pages/auth/login/login';
 import { Register } from '../pages/auth/register/register';
 import { Principal } from '../pages/core/principal/principal';
 import { SharedNavbar } from '../components/shared/navbar/shared-navbar';
-
+import { Search } from '../pages/search/search';
+import {BookPage} from '../pages/bookPage/bookPage';
 
 export const AppRouter = () => {
     return (
@@ -20,6 +21,8 @@ export const AppRouter = () => {
                         <Route path="/" element={<Principal/>} />
                         <Route path="/login" element={<Login/>} />
                         <Route path="/register" element={<Register/>} />
+                        <Route path="/search" element={<Search/>}/>
+                        <Route path="/book" element={<BookPage/>}/>
                     </Routes>
                 </div>
             </Router>
