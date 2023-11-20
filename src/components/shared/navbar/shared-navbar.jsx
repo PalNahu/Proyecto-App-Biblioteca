@@ -1,10 +1,17 @@
 import './shared-navbar.css';
 import React, { useState } from 'react';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Avatar, Tooltip } from "@nextui-org/react";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { startLogout } from '../../../store/auth/thunks';
 
 
 export const SharedNavbar = () => {
+
+  //TODO: Arreglar estado de navbar
+
+  const { status, displayName, photoUrl } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
 
   const listItem = [
     {
@@ -21,6 +28,15 @@ export const SharedNavbar = () => {
 
   const handleClickButtonNavbar = (path) => {
     setCurrentNavbar(path);
+  }
+
+  const onLogin = (path) => {
+    setCurrentNavbar(path);
+  }
+
+  const onLogout = () => {
+    dispatch(startLogout());
+    navigate('/auth/login');
   }
 
   return (
@@ -46,11 +62,32 @@ export const SharedNavbar = () => {
         }
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem>
-          <Button as={Link} color="primary" to="/login" variant="flat" onClick={() => handleClickButtonNavbar('')}>
-            Iniciar Sesión
-          </Button>
-        </NavbarItem>
+
+        {
+          (status === 'not-authenticated')
+            ? (
+              <NavbarItem>
+                <Button as={Link} color="primary" to="/auth/login" variant="flat" onClick={() => onLogin('')}>
+                  Iniciar Sesión
+                </Button>
+
+              </NavbarItem>
+            ) : (
+              <>
+                <NavbarItem>
+                  <Tooltip content={displayName}>
+                    <Avatar src={(!!!photoUrl) ? "" : photoUrl} />
+                  </Tooltip>
+                </NavbarItem>
+                <NavbarItem>
+                  <Button as={Link} color="primary" to="/auth/login" variant="flat" onClick={() => onLogout()}>
+                    Cerrar sesión
+                  </Button>
+                </NavbarItem>
+              </>
+            )
+        }
+
       </NavbarContent>
 
     </Navbar>
