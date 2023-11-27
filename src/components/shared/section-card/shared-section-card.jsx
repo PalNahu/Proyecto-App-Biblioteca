@@ -1,4 +1,5 @@
 
+
 import React from 'react'
 import { SharedSimpleCard } from '../simple-card/shared-simple-card'
 import './shared-section-card.css'
@@ -26,3 +27,4 @@ export const SharedSectionCard = ({direction = 'row'}) => {
 		</>
 	)
 }
+

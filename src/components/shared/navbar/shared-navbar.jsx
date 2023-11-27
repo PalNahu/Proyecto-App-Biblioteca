@@ -1,3 +1,4 @@
+
 import './shared-navbar.css';
 import React, { useState } from 'react';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Avatar, Tooltip } from "@nextui-org/react";
@@ -75,7 +76,7 @@ export const SharedNavbar = () => {
               <>
                 <NavbarItem>
                   <Tooltip content={displayName}>
-                    <Avatar src={(!!!photoUrl) ? "" : photoUrl} />
+                    <Avatar src={photoUrl} />
                   </Tooltip>
                 </NavbarItem>
                 <NavbarItem>
