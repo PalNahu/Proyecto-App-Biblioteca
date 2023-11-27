@@ -1,0 +1,29 @@
+.list-section {
+    color: #000;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.centered-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.centered-list li {
+    margin: 0 0 10px 0;
+    /* Espaciado vertical entre elementos de la lista */
+}
+
+.list-container {
+    border-radius: 2rem;
+}
+
+.li button {
+    color: #000;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

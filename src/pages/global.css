@@ -1,0 +1,24 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.container{
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 1rem;
+    padding: 5rem;
+    height: 35rem;
+}
+
+.form-component{
+    margin-top: 1rem;
+    min-width: 300px;
+}
+
+.container-form{
+    margin: auto;
+}
+
+.button-submit{
+    margin: 1rem auto 0 auto;
+    width: 100%;
+}
