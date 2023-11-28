@@ -12,7 +12,7 @@ import { FirebaseAuth } from '../firebase/config';
 import { login, logout } from '../store/auth/authSlice';
 import { AuthRoutes } from './AuthRoutes';
 import { AppBibliotecaRoutes } from './AppBibliotecaRoutes';
-
+import { Footer } from '../components/shared/footer/footer';
 
 export const AppRouter = () => {
 
@@ -44,15 +44,15 @@ export const AppRouter = () => {
         <Routes>
 
           {
-            (status === 'not-authenticated') 
-            ? <Route path="/auth/*" element={<AuthRoutes />} />
-            : null
-            }
-               
-            <Route path="/*" element={<AppBibliotecaRoutes />} />
-          
-        </Routes>
+            (status === 'not-authenticated')
+              ? <Route path="/auth/*" element={<AuthRoutes />} />
+              : null
+          }
 
+          <Route path="/*" element={<AppBibliotecaRoutes />} />
+
+        </Routes>
+        <Footer></Footer>
       </Router>
     </>
   )
