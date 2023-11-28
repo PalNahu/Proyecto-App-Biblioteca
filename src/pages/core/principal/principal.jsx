@@ -9,7 +9,7 @@ import { SharedSearchBar } from '../../../components/shared/search-bar/shared-se
 export const Principal = () => {
     return (
         <>
-            <div className="header-container dark:bg-neutral-900" >
+            <div className="header-container" >
 
                 <div className="header-background"></div>
 

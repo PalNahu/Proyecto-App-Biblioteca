@@ -5,7 +5,8 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Avatar, Tooltip
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../../store/auth/thunks';
-
+import backgroundImageLight from '../../../assets/background-light.png'
+import backgroundImageDark from '../../../assets/background-dark.png'
 export const SharedNavbar = () => {
   const [theme, setTheme] = useState(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -17,30 +18,22 @@ export const SharedNavbar = () => {
 
   useEffect(() => {
     const body = document.querySelector("body");
-    const root = document.querySelector("#root");
     const html = document.querySelector("html");
-  
     const footer = document.querySelector(".footer");
 
     if (theme === "dark") {
       body.classList.add("dark");
-      body.style.backgroundColor = "#000";
-      root.classList.add("dark");
-      root.style.backgroundColor = "#000";
+      body.style.backgroundImage = `url(${backgroundImageDark})`
       footer.classList.add("dark");
-      footer.style.backgroundColor = "#000";
       html.classList.add("dark");
-      html.style.backgroundColor = "#000";
+      html.style.backgroundImage = `url(${backgroundImageDark})`
 
     } else {
       body.classList.remove("dark");
-      body.style.backgroundColor = "#fff";
-      root.classList.remove("dark");
-      root.style.backgroundColor = "#fff";
+      body.style.backgroundImage = `url(${backgroundImageLight})`
       footer.classList.remove("dark");
-      footer.style.backgroundColor = "#fff";
       html.classList.remove("dark");
-      html.style.backgroundColor = "#fff";
+      html.style.backgroundImage = `url(${backgroundImageLight})`
     }
   }, [theme]);
 

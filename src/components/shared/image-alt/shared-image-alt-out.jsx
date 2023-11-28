@@ -5,7 +5,7 @@ import './shared-image-alt-global.css';
 export const SharedImageAltOut = ({ height, width, title, image = 'https://nextui.org/images/card-example-4.jpeg' }) => {
   return (
     <>
-      <Card className={`col-span-12 sm:col-span-4 h-[${height}] w-[${width}]`}>
+      <Card className={`col-span-12 sm:col-span-4 h-[${height}] w-[${width}]` }>
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
         </CardHeader>
         <Image
@@ -15,7 +15,7 @@ export const SharedImageAltOut = ({ height, width, title, image = 'https://nextu
           src={image}
         />
       </Card>
-      <div className='share-title-image-alt-out mt-2'>
+      <div className='share-title-image-alt-out mt-2 dark:text-white'>
         {title}
       </div>
     </>
