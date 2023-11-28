@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import '../../global.css'
 import './login.css'
-import { Button, Checkbox, Chip, CircularProgress, Divider, Input } from '@nextui-org/react'
+import { Button, Checkbox, Chip, Divider, Input } from '@nextui-org/react'
 import { useForm } from '../../../hooks/useForm'
 import { startGoogleSignIn, startLoginWithEmailPassword } from '../../../store/auth/thunks'
 
@@ -124,11 +124,6 @@ export const Login = () => {
                   </Button>
                 </div>
               </div>
-
-
-
-
-
             </div>
 
           </div>

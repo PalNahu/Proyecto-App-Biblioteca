@@ -2,9 +2,9 @@
 import React from 'react';
 import './principal.css';
 import '../../global.css';
-import { Autocomplete, AutocompleteItem, Button, Card, CardHeader, Image } from '@nextui-org/react';
-import { animals } from './data';
+import { Button, Card, CardHeader, Image } from '@nextui-org/react';
 import { SharedImageAltOut } from '../../../components/shared/image-alt/shared-image-alt-out';
+import { SharedSearchBar } from '../../../components/shared/search-bar/shared-search-bar';
 
 export const Principal = () => {
     return (
@@ -21,16 +21,8 @@ export const Principal = () => {
                         <h3 className='principal-subtitle mb-4'>
                             find your favorite book and read it here for free
                         </h3>
-                        <Autocomplete
-                            label="Search book"
-                            className="w-96 "
-                        >
-                            {animals.map((animal) => (
-                                <AutocompleteItem key={animal.value} value={animal.value}>
-                                    {animal.label}
-                                </AutocompleteItem>
-                            ))}
-                        </Autocomplete>
+                        <SharedSearchBar>
+                        </SharedSearchBar>
 
                     </div>
                 </div>
