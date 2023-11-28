@@ -7,5 +7,5 @@
 }
 
 .simple-card-container:hover {
-    transform: scale(1.1); /* Aplica un aumento de escala (zoom) en el elemento al pasar el mouse sobre él */
+    transform: scale(1.05); /* Aplica un aumento de escala (zoom) en el elemento al pasar el mouse sobre él */
 }
