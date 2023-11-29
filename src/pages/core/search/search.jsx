@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../../global.css';
 import { SharedListCategories } from '../../../components/shared/list-categories/shared-list-categories';
-import { SharedSectionCard } from '../../../components/shared/section-card/shared-section-card';
 import { SharedSearchBar } from '../../../components/shared/search-bar/shared-search-bar';
 import { ListResultCard } from '../../../components/shared/list-result-card/list-result-card';
 export const Search = () => {
@@ -23,8 +22,6 @@ export const Search = () => {
           variant='bordered'
           callbackWithValues={handleChanges}
         ></SharedSearchBar>
-
-        <SharedListCategories></SharedListCategories>
 
       </div>
 

@@ -3,32 +3,43 @@ import React from 'react';
 import './principal.css';
 import '../../global.css';
 import { Button, Card, CardHeader, Image } from '@nextui-org/react';
-import { SharedImageAltOut } from '../../../components/shared/image-alt/shared-image-alt-out';
-import { SharedSearchBar } from '../../../components/shared/search-bar/shared-search-bar';
+import { useMediaQuery } from '@react-hook/media-query';
 
 export const Principal = () => {
+
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
+
     return (
         <>
-            <div className="header-container" >
+            <div className="header-container dark:bg-black/20 px-[2rem]" >
 
-                <div className="header-background"></div>
-
-                <div className="row container-titles">
-                    <div className="col-md-7">
-                        <h1 className='principal-title mb-1 dark:text-white'>
-                            read and add your insight
+                <div className="flex flex-row">
+                    <div className="flex flex-col justify-center xl:basis-7/12 lg:basis-9/12 md:basis-12/12">
+                        <h1 className='text-4xl sm:text-5xl lg:text-7xl font-bold mb-1 dark:text-white'>
+                            READ AND ADD YOUR INSIGHT
                         </h1>
-                        <h3 className='principal-subtitle mb-4 dark:text-white'>
-                            find your favorite book and read it here for free
+                        <h3 className='text-2xl mb-4 dark:text-white'>
+                            Find your favorite book and read it here for free
                         </h3>
-
-
                     </div>
-                </div>
 
+                    {
+                        (!isMobile)
+                            ? (
+                                <div className='basis-3/12'>
+                                    <div className="header-background lg:w-[24.5rem] lg:h-[24.5rem] md:w-[20rem] md:h-[20rem]"></div>
+
+                                </div>
+
+                            )
+                            : null
+                    }
+
+                </div>
             </div>
 
-            <div className="flex flex-row justify-center gap-5 mt-20 mb-28 section2 dark:text-white" >
+            <div className="flex flex-row flex-wrap justify-center gap-5 mt-20 mb-28 section2 dark:text-white" >
                 <div className="basis-1/7 flex flex-col justify-between w-64 dark:text-white">
                     <div className='p-1'>
                         <div className='title-principal-content dark:text-white'>
@@ -42,7 +53,7 @@ export const Principal = () => {
                         color="primary"
                         variant="ghost"
                         className='m-auto w-2/3'
-                        
+
                     >
                         Seguir buscando
                     </Button>
@@ -104,7 +115,7 @@ export const Principal = () => {
 
                 </div>
 
-                <div className='flex flex-row dark:text-white'>
+                <div className='flex flex-row flex-wrap gap-y-8 justify-center dark:text-white'>
                     <div className="basis-1/3 flex flex-col items-center text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">
                             <circle cx="48" cy="48" r="48" fill="#C1DCDC" />
@@ -150,7 +161,7 @@ export const Principal = () => {
                 </div>
 
             </div>
-
+{/* 
             <div className='flex flex-col item-center mt-32 dark:text-white'>
                 <div className='mb-12'>
 
@@ -179,7 +190,7 @@ export const Principal = () => {
                         ></SharedImageAltOut>
                     </div>
                     <div className='basis-1/3'>
-                        <SharedImageAltOut 
+                        <SharedImageAltOut
                             height={'32rem'}
                             width={'22rem'}
                             title={'Finance'}
@@ -190,7 +201,7 @@ export const Principal = () => {
                 </div>
 
 
-            </div>
+            </div> */}
 
 
 

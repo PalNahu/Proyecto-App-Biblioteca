@@ -5,15 +5,8 @@ import { CircularProgress } from '@nextui-org/react';
 
 export const ListResultCard = ({ list, isLoading }) => {
 
-  useEffect(() => {
-    console.log({ list });
-    console.log({ isLoading });
-  }, [list, isLoading])
-
-
   return (
     <>
-
       {
         (!isLoading)
           ? (

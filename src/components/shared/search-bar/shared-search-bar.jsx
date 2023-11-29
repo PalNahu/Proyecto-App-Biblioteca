@@ -28,6 +28,7 @@ export const SharedSearchBar = ({ variant = 'flat', callbackWithValues }) => {
     <>
       <div className="w-full flex flex-col gap-2 max-w-[240px]">
         <Input
+          className="dark:text-white"
           variant={variant}
           placeholder="Search"
           value={searchValue}

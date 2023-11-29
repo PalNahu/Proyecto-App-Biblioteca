@@ -44,13 +44,13 @@ export const Register = () => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <div className=" container d-flex justify-center align-center">
+        <div className=" container d-flex justify-center align-center dark:bg-black/20">
 
           <div>
-            <h1 className='text-2xl'>Regístrate</h1>
+            <h1 className='text-2xl dark:text-white'>Regístrate</h1>
 
             <Input
-              className='form-component'
+              className='form-component dark:text-white'
               type="text"
               label="Nombre"
               variant='bordered'
@@ -61,7 +61,7 @@ export const Register = () => {
               errorMessage={(formSubmitted) ? displayNameValid : ''}
             />
             <Input
-              className='form-component'
+              className='form-component dark:text-white'
               type="email"
               label="Email"
               variant='bordered'
@@ -72,7 +72,7 @@ export const Register = () => {
               errorMessage={(formSubmitted) ? emailValid : ''}
             />
             <Input
-              className='form-component'
+              className='form-component dark:text-white'
               type="password"
               label="Contraseña"
               variant='bordered'
@@ -83,13 +83,7 @@ export const Register = () => {
               errorMessage={(formSubmitted) ? passwordValid : ''}
             />
 
-            {/* <Input
-              className='form-component'
-              type="password"
-              label="Confirmar contraseña" 
-            /> */}
-
-            <div className='form-component'>
+            <div className='form-component dark:text-white'>
               <Chip
                 style={{
                   display: !!!errorMessage ? 'none' : '',
@@ -112,9 +106,6 @@ export const Register = () => {
             </Button>
 
           </div>
-
-
-
         </div>
       </form>
 

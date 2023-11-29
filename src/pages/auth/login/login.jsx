@@ -8,8 +8,11 @@ import './login.css'
 import { Button, Checkbox, Chip, Divider, Input } from '@nextui-org/react'
 import { useForm } from '../../../hooks/useForm'
 import { startGoogleSignIn, startLoginWithEmailPassword } from '../../../store/auth/thunks'
+import { useMediaQuery } from '@react-hook/media-query'
 
 export const Login = () => {
+
+  const isMediumScreen = useMediaQuery('(max-width: 1024px)');
 
   const { status, errorMessage } = useSelector(state => state.auth);
 
@@ -26,7 +29,6 @@ export const Login = () => {
   }
 
   const onGoogleSignIn = () => {
-    console.log('onGoogleSignIn');
     dispatch(startGoogleSignIn());
   }
 
@@ -35,24 +37,32 @@ export const Login = () => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 col-sm-12 container-form">
+        <div className="container dark:bg-black/20">
+          <div className="flex flex-row flex-wrap justify-center ">
+            <div className="lg:basis-6/12 md:basis-12/12 flex flex-col justify-center md:px-8 sm:p-0">
 
-              <h1 className='text-right text-2xl font-bold'>Iniciar Sesión</h1>
+              <h1 className='text-2xl font-bold dark:text-white'>Iniciar Sesión</h1>
               <br></br>
-              <h3 className='text-right text-base font-medium'>
+              <h3 className='text-base font-medium dark:text-white'>
                 Te damos la bienvenida nuevamente.
               </h3>
             </div>
-            <div className="col-md-1 col-sm-0 d-flex justify-center">
-              <Divider orientation="vertical" className="h-96" />
-            </div>
-            <div className="col-md-5 col-sm-12 container-form">
+
+            {
+              (!isMediumScreen)
+                ? (
+                  <div className="basis-1/12 col-sm-0 d-flex justify-center">
+                    <Divider orientation="vertical" className="h-96" />
+                  </div>
+                )
+                : null
+
+            }
+            <div className="lg:basis-5/12 md:basis-12/12 container-form">
 
               <div className='text-left'>
                 <Input
-                  className='form-component'
+                  className='form-component dark:text-white'
                   type="email"
                   label="Email"
                   variant='bordered'
@@ -61,8 +71,9 @@ export const Login = () => {
                   value={email}
                   onChange={onInputChange}
                 />
+                {/*//TODO: ver contraseña */}
                 <Input
-                  className='form-component'
+                  className='form-component dark:text-white'
                   type="password"
                   label="Contraseña"
                   variant='bordered'
@@ -113,7 +124,7 @@ export const Login = () => {
                   </div>
 
                 </div>
-                <div className='mt-3'>
+                <div className='mt-3 dark:text-white'>
                   Usuario nuevo?
                   <Button size="sm" color="primary" variant="light" >
                     <Link

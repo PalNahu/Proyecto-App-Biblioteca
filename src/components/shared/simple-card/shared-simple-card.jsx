@@ -5,7 +5,7 @@ import './shared-simple-card.css'
 export const SharedSimpleCard = ({title, authors, urlImage}) => {
   return (
     <>
-      <Card className="py-3 w-60 simple-card-container">
+      <Card className="py-3 w-60 simple-card-container dark:!bg-black/50">
         <div className='m-auto'>
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
             <p className="text-tiny uppercase font-bold">{title}</p>
