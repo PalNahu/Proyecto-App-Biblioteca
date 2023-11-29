@@ -37,7 +37,7 @@ export const Login = () => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <div className="container dark:bg-black/20">
+        <div className="container p-20 dark:bg-black/20">
           <div className="flex flex-row flex-wrap justify-center ">
             <div className="lg:basis-6/12 md:basis-12/12 flex flex-col justify-center md:px-8 sm:p-0">
 
