@@ -4,6 +4,7 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
 import { Principal } from '../pages/core/principal/principal'
 import { BookPage } from '../pages/core/bookPage/bookPage'
 import { Search } from '../pages/core/search/search'
+import { ReservePage } from '../pages/core/reservePage/reservePage'
 
 export const AppBibliotecaRoutes = () => {
   return (
@@ -13,6 +14,7 @@ export const AppBibliotecaRoutes = () => {
         <Route path="/search" element={<Search/>}/>
         <Route path="/book" element={<BookPage/>}/>
         <Route path="/*" element={<Navigate to="/" />} />
+        <Route path="/reserve" element={<ReservePage/>} />
       </Routes>
     </>
   )

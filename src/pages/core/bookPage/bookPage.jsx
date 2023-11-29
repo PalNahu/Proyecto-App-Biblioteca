@@ -4,8 +4,20 @@ import { Card, Button, Image, Chip } from "@nextui-org/react";
 import { SharedSimpleCard } from '../../../components/shared/simple-card/shared-simple-card';
 import './bookPage.css';
 import { SharedSectionCard } from '../../../components/shared/section-card/shared-section-card';
+import { useSelector } from 'react-redux';
+import { Login } from '../../auth/login/login';
+import { ReservePage } from '../reservePage/reservePage';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 
 export const BookPage = () => {
+	const { status } = useSelector(state => state.auth);
+	const navigate = useNavigate();
+
+	const handleIfLogged = () => {
+		return (status === 'not-authenticated' || !status) ? navigate('/auth/login'): navigate('/reserve');
+	};
+
 	return (
 		<>
 
@@ -48,7 +60,7 @@ export const BookPage = () => {
 									</svg>
 
 									<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
-										<path d="M7.29561 1.19067L9.13519 4.91746L13.2489 5.51874L10.2723 8.41801L10.9748 12.5139L7.29561 10.5791L3.61646 12.5139L4.31895 8.41801L1.34229 5.51874L5.45603 4.91746L7.29561 1.19067Z" fill="black" />
+										<path d="M7.29561 1.19067L9.13519 4.917handleIfLogged46L13.2489 5.51874L10.2723 8.41801L10.9748 12.5139L7.29561 10.5791L3.61646 12.5139L4.31895 8.41801L1.34229 5.51874L5.45603 4.91746L7.29561 1.19067Z" fill="black" />
 									</svg>
 								</div>
 
@@ -61,6 +73,8 @@ export const BookPage = () => {
 									color="primary"
 									variant="ghost"
 									className='mt-3 w-80'
+									onClick={handleIfLogged}
+
 								>
 									Reservalo ahora
 								</Button>
