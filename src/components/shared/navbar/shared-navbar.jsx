@@ -5,14 +5,10 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Avatar, Tooltip
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../../store/auth/thunks';
-
 import { SharedToggleDarkmode } from '../toggle-darkmode/shared-toggle-darkmode';
 import { useMediaQuery } from '@react-hook/media-query';
 
 export const SharedNavbar = () => {
-
-
-  //TODO: Arreglar estado de navbar
 
   const { status, displayName, photoUrl } = useSelector(state => state.auth);
   const dispatch = useDispatch();

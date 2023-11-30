@@ -4,22 +4,33 @@ import './principal.css';
 import '../../global.css';
 import { Button, Card, CardHeader, Image } from '@nextui-org/react';
 import { useMediaQuery } from '@react-hook/media-query';
+import { useSpring, animated } from 'react-spring';
+import { useNavigate } from 'react-router-dom';
 
 export const Principal = () => {
-
+	const navigate = useNavigate();
     const isMobile = useMediaQuery('(max-width: 768px)');
 
+    const fadeInProps = useSpring({
+        opacity: 1,
+        from: { opacity: 0 },
+        config: { duration: 300 }, 
+    });
+
+    const navigateSearch = () =>{
+		navigate('/search')
+	}
 
     return (
         <>
-            <div className="header-container dark:bg-black/20 px-[2rem]" >
+            <animated.div className="header-container dark:bg-black/20 px-[2rem] " style={fadeInProps} >
 
                 <div className="flex flex-row">
-                    <div className="flex flex-col justify-center xl:basis-7/12 lg:basis-9/12 md:basis-12/12">
-                        <h1 className='text-4xl sm:text-5xl lg:text-7xl font-bold mb-1 dark:text-white'>
+                    <div className="flex flex-col justify-center xl:basis-7/12 lg:basis-9/12 md:basis-12/12 ">
+                        <h1 className='text-4xl sm:text-5xl lg:text-7xl font-bold mb-1 dark:text-white '>
                             READ AND ADD YOUR INSIGHT
                         </h1>
-                        <h3 className='text-2xl mb-4 dark:text-white'>
+                        <h3 className='text-2xl mb-4 dark:text-white '>
                             Find your favorite book and read it here for free
                         </h3>
                     </div>
@@ -37,23 +48,23 @@ export const Principal = () => {
                     }
 
                 </div>
-            </div>
+            </animated.div>
 
-            <div className="flex flex-row flex-wrap justify-center gap-5 mt-20 mb-28 section2 dark:text-white" >
-                <div className="basis-1/7 flex flex-col justify-between w-64 dark:text-white">
+            <animated.div className="flex flex-row flex-wrap justify-center gap-5 mt-20 mb-28 section2 dark:text-white " style={fadeInProps}>
+                <div className="basis-1/7 flex flex-col justify-between w-64 dark:text-white ">
                     <div className='p-1'>
-                        <div className='title-principal-content dark:text-white'>
-                            Best Selling Plants
+                        <div className='title-principal-content dark:text-white '>
+                            Algunos ejemplos de nuestros géneros
                         </div>
-                        <div className='subtitle-principal-content dark:text-white'>
-                            Easiest way to healthy life by buying your favorite plants
+                        <div className='subtitle-principal-content dark:text-white '>
+                            ¡Estos son varios ejemplos pero hay libros de lo que busques!
                         </div>
                     </div>
                     <Button
                         color="primary"
                         variant="ghost"
                         className='m-auto w-2/3'
-
+                        onClick={navigateSearch}
                     >
                         Seguir buscando
                     </Button>
@@ -101,9 +112,9 @@ export const Principal = () => {
                         />
                     </Card>
                 </div>
-            </div>
+            </animated.div>
 
-            <div className='flex flex-col item-center mt-32 mb-24 aboutus dark:text-white'>
+            <animated.div className='flex flex-col item-center mt-32 mb-24 aboutus dark:text-white' style={fadeInProps}>
                 <div className='mb-8'>
 
                     <div className='title-principal-content dark:text-white'>
@@ -160,50 +171,7 @@ export const Principal = () => {
                     </div>
                 </div>
 
-            </div>
-{/* 
-            <div className='flex flex-col item-center mt-32 dark:text-white'>
-                <div className='mb-12'>
-
-                    <div className='title-principal-content dark:text-white'>
-                        Categories
-                    </div>
-                    <div className='subtitle-principal-content dark:text-white'>
-                        Find what you are looking for
-                    </div>
-                </div>
-
-                <div className="flex flex-row gap-[6rem] dark:text-white">
-
-                    <div className='basis-1/3 '>
-                        <SharedImageAltOut
-                            height={'32rem'}
-                            width={'22rem'}
-                            title={'Technology'}
-                        ></SharedImageAltOut>
-                    </div>
-                    <div className='basis-1/3 pt-16'>
-                        <SharedImageAltOut
-                            height={'32rem'}
-                            width={'22rem'}
-                            title={'History'}
-                        ></SharedImageAltOut>
-                    </div>
-                    <div className='basis-1/3'>
-                        <SharedImageAltOut
-                            height={'32rem'}
-                            width={'22rem'}
-                            title={'Finance'}
-                        ></SharedImageAltOut>
-                    </div>
-
-
-                </div>
-
-
-            </div> */}
-
-
+            </animated.div>
 
         </>
     )
