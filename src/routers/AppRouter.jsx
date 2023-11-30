@@ -13,6 +13,8 @@ import { login, logout } from '../store/auth/authSlice';
 import { AuthRoutes } from './AuthRoutes';
 import { AppBibliotecaRoutes } from './AppBibliotecaRoutes';
 import { Footer } from '../components/shared/footer/footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AppRouter = () => {
 
@@ -41,6 +43,8 @@ export const AppRouter = () => {
     <>
       <Router>
         <SharedNavbar></SharedNavbar>
+
+        <ToastContainer />
 
         <Routes>
 

@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import {  useNavigate, useParams } from 'react-router-dom';
 import { getBookById } from '../../../store/book/thunks';
 import { Button, Image, Chip, CircularProgress } from "@nextui-org/react";
 import { SharedSectionCard } from '../../../components/shared/section-card/shared-section-card';
 import './bookPage.css';
 import '../../global.css';
+import { toast } from 'react-toastify';
+
+
 
 export const BookPage = () => {
 
@@ -41,7 +44,23 @@ export const BookPage = () => {
 
 	//Metodos
 	const handleIfLogged = () => {
-		return (status === 'not-authenticated' || !status) ? navigate('/auth/login') : navigate('/reserve');
+
+		if (status === 'not-authenticated' || !status) {
+			toast.error("Necesitas estar logueado para reservar el libro", {
+				position: "top-center",
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: 'light',
+			});
+			navigate('/auth/login');
+			}
+		 else {
+			navigate('/reserve');
+		}
 	};
 
 	const backToSearchPage = () => {
@@ -74,7 +93,6 @@ export const BookPage = () => {
 											)
 											: ''}
 								</div>
-
 								<div className="basis-1/2 flex flex-col justify-end mb-2 p-2 mt-12">
 									<div className='title-book-header text-left dark:text-white'>
 										{bookById.volumeInfo.title}

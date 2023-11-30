@@ -18,8 +18,8 @@
   --stars-color: #fff;
   --clouds-color: #F3FDFF;
   --back-clouds-color: #AACADF;
-  --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
-  --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
+  --transition: .3s cubic-bezier(0, -0.02, 0.4, 1.25);
+  --circle-transition: .2s cubic-bezier(0, -0.02, 0.35, 1.17);
 }
 
 .theme-switch,
@@ -202,4 +202,11 @@
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+
+}
+
+
+*{
+  transition: 0.2s ease-in-out;
+
 }
