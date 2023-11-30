@@ -12,7 +12,7 @@ export const AppBibliotecaRoutes = () => {
       <Routes>
         <Route path="/" element={<Principal />} />
         <Route path="/search" element={<Search/>}/>
-        <Route path="/book" element={<BookPage/>}/>
+        <Route path="/book/:id" element={<BookPage/>}/>
         <Route path="/*" element={<Navigate to="/" />} />
         <Route path="/reserve" element={<ReservePage/>} />
       </Routes>

@@ -1,21 +1,16 @@
 
 import './shared-navbar.css';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Avatar, Tooltip, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../../store/auth/thunks';
 
 import { SharedToggleDarkmode } from '../toggle-darkmode/shared-toggle-darkmode';
 import { useMediaQuery } from '@react-hook/media-query';
+import { clearBooks } from '../../../store/book/bookSlice';
 
 export const SharedNavbar = () => {
-
-
-  //TODO: Arreglar estado de navbar
-
-  const { status, displayName, photoUrl } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
 
   const listItem = [
     {
@@ -26,20 +21,20 @@ export const SharedNavbar = () => {
       path: '/search',
       description: 'Reserva tus libros'
     }
-  ]
+  ];
 
-
+  const { status, displayName, photoUrl } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  const location = useLocation();
   const isMobile = useMediaQuery('(max-width: 640px)');
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [currentNavbar, setCurrentNavbar] = useState("/");
 
-  const handleClickButtonNavbar = (path) => {
-    setCurrentNavbar(path);
-  }
-
-  const onLogin = (path) => {
-    setCurrentNavbar(path);
-  }
+  useEffect(() => {
+    if(location.pathname.includes('/auth') || location.pathname === '/'){
+      dispatch(clearBooks());
+    }
+  }, [location.pathname])
+  
 
   const onLogout = () => {
     dispatch(startLogout());
@@ -63,12 +58,11 @@ export const SharedNavbar = () => {
         {
           listItem.map((item, index) => (
             <NavbarItem
-              isActive={currentNavbar == item.path}
+              isActive={location.pathname === item.path}
               key={index} >
               <Link
-                style={{ 'color': currentNavbar != item.path ? 'inherit' : '#0d6efd' }}
-                to={item.path}
-                onClick={() => handleClickButtonNavbar(item.path)}>
+                style={{ 'color': location.pathname != item.path ? 'inherit' : '#0d6efd' }}
+                to={item.path}>
                 {item.description}
               </Link>
             </NavbarItem>
@@ -83,7 +77,7 @@ export const SharedNavbar = () => {
                 (status === 'not-authenticated')
                   ? (
                     <NavbarItem>
-                      <Button as={Link} color="primary" to="/auth/login" variant="flat" onClick={() => onLogin('')}>
+                      <Button as={Link} color="primary" to="/auth/login" variant="flat">
                         Iniciar Sesión
                       </Button>
 
@@ -106,7 +100,6 @@ export const SharedNavbar = () => {
 
               <SharedToggleDarkmode>
               </SharedToggleDarkmode>
-
 
             </NavbarContent>
 

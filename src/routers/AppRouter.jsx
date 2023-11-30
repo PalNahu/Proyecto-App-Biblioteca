@@ -41,6 +41,7 @@ export const AppRouter = () => {
     <>
       <Router>
         <SharedNavbar></SharedNavbar>
+
         <Routes>
 
           {
@@ -52,7 +53,10 @@ export const AppRouter = () => {
           <Route path="/*" element={<AppBibliotecaRoutes />} />
 
         </Routes>
-        <Footer></Footer>
+
+        <div className=''>
+          <Footer ></Footer>
+        </div>
       </Router>
     </>
   )

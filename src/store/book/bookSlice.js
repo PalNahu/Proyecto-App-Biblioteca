@@ -8,6 +8,7 @@ export const bookSlice = createSlice({
   initialState: {
     books: [],
     isLoading: false,
+    bookById: undefined,
   },
   reducers: {
     startLoadingBooks: (state) => {
@@ -16,8 +17,20 @@ export const bookSlice = createSlice({
     setBooks: (state, action) => {
       state.isLoading = false;
       state.books = action.payload.books;
-    }
+    },
+    clearBooks: (state) => {
+      state.isLoading = false;
+      state.books = [];
+    },
+    setBookById: (state, action) => {
+      state.isLoading = false;
+      state.bookById = action.payload.book;
+    },
+    clearBookById: (state, action) => {
+      state.bookById = undefined;
+    },
+
   },
 });
 
-export const { startLoadingBooks, setBooks } = bookSlice.actions;
+export const { startLoadingBooks, setBooks, clearBooks, setBookById, clearBookById } = bookSlice.actions;

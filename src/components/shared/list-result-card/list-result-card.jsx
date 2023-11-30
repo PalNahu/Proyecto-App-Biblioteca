@@ -5,28 +5,30 @@ import { CircularProgress } from '@nextui-org/react';
 
 export const ListResultCard = ({ list, isLoading }) => {
 
+
+
   return (
     <>
       {
         (!isLoading)
           ? (
-            <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-8 gap-y-4'>
+            <div className='grid bg-white/20 dark:bg-black/20 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-x-10 gap-y-10'>
 
               {
-                list.map( ({id, volumeInfo}) => (
-                  <SharedSimpleCard 
+                list.map(({ id, volumeInfo }) => (
+                  <SharedSimpleCard
                     key={id}
+                    id={id}
                     title={volumeInfo.title}
                     authors={volumeInfo}
-                    urlImage={(volumeInfo.imageLinks != undefined) ? volumeInfo.imageLinks.thumbnail: ''}
+                    urlImage={(volumeInfo.imageLinks != undefined) ? volumeInfo.imageLinks.thumbnail : ''}
                   ></SharedSimpleCard>
                 ))
               }
             </div>
           )
           : <CircularProgress className='mt-24' aria-label="Loading..." />
-    }
-
+      }
     </>
   )
 }

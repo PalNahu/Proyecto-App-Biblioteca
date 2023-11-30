@@ -44,7 +44,7 @@ export const Register = () => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <div className=" container d-flex justify-center align-center dark:bg-black/20">
+        <div className=" container d-flex justify-center align-center p-20 pb-28 dark:bg-black/20">
 
           <div>
             <h1 className='text-2xl dark:text-white'>Regístrate</h1>
