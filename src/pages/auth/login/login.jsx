@@ -1,14 +1,15 @@
 
-import React, { useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-
-import '../../global.css'
-import './login.css'
-import { Button, Checkbox, Chip, Divider, Input } from '@nextui-org/react'
-import { useForm } from '../../../hooks/useForm'
-import { startGoogleSignIn, startLoginWithEmailPassword } from '../../../store/auth/thunks'
-import { useMediaQuery } from '@react-hook/media-query'
+import React, { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import '../../global.css';
+import './login.css';
+import { Button, Checkbox, Chip, Divider, Input } from '@nextui-org/react';
+import { useForm } from '../../../hooks/useForm';
+import { startGoogleSignIn, startLoginWithEmailPassword } from '../../../store/auth/thunks';
+import { useMediaQuery } from '@react-hook/media-query';
+import { EyeFilledIcon } from './EyeFilledIcon';
+import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon";
 
 export const Login = () => {
 
@@ -33,6 +34,9 @@ export const Login = () => {
   }
 
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
+
+  const [isVisible, setInvisible] = React.useState(false);
+  const toggleVisibility = () => setInvisible(!isVisible);
 
   return (
     <>
@@ -74,13 +78,22 @@ export const Login = () => {
                 {/*//TODO: ver contraseña */}
                 <Input
                   className='form-component dark:text-white'
-                  type="password"
+                  type={isVisible ? "text" : "password"}
                   label="Contraseña"
                   variant='bordered'
                   placeholder='Ingrese su contraseña'
                   name="password"
                   value={password}
                   onChange={onInputChange}
+                  endContent={<button className='focus: outline-none' type="button" onClick={toggleVisibility}>
+                    {isVisible ? (
+                      <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                    ) : (
+                      <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                    )}
+                  </button>}
+                   description="Nunca compartiremos sus datos con nadie."
+
                 />
 
                 <Checkbox className='mt-2' defaultSelected>Recordar sesión</Checkbox>
