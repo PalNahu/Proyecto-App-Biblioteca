@@ -125,7 +125,7 @@ export const Login = () => {
 
                 </div>
                 <div className='mt-3 dark:text-white'>
-                  Usuario nuevo?
+                  ¿Usuario nuevo?
                   <Button size="sm" color="primary" variant="light" >
                     <Link
                       to="/auth/register"
