@@ -28,8 +28,9 @@ export const Principal = () => {
                 <div className="flex flex-row">
                     <div className="flex flex-col justify-center xl:basis-7/12 lg:basis-9/12 md:basis-12/12 ">
                         <h1 className='text-4xl sm:text-5xl lg:text-7xl font-bold mb-1 dark:text-white '>
-                            Biblioteca "BiblioTech"
+                            BiblioTech
                         </h1>
+                        <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 dark:text-white '>"Un lugar para reservar"</h2>
                         <h3 className='text-2xl mb-4 dark:text-white '>
                            ¡Encuentra los libros que estás buscando y reservalos!
                         </h3>
