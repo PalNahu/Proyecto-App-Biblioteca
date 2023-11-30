@@ -84,12 +84,12 @@ export const SharedNavbar = () => {
                   ) : (
                     <>
                       <NavbarItem>
-                        <Tooltip content={displayName}>
+                        <Tooltip content={displayName}className='dark:text-white'>
                           <Avatar src={photoUrl} />
                         </Tooltip>
                       </NavbarItem>
-                      <NavbarItem>
-                        <Button as={Link} color="primary" to="/auth/login" variant="flat" onClick={() => onLogout()}>
+                      <NavbarItem >
+                        <Button as={Link} color="primary" to="/auth/login" variant="flat" onClick={() => onLogout()} >
                           Cerrar sesión
                         </Button>
                       </NavbarItem>
@@ -137,7 +137,7 @@ export const SharedNavbar = () => {
             ) : (
               <>
                 <NavbarItem>
-                  <Tooltip content={displayName}>
+                  <Tooltip content={displayName} >
                     <Avatar src={photoUrl} />
                   </Tooltip>
                 </NavbarItem>

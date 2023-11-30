@@ -38,7 +38,6 @@ export const SharedToggleDarkmode = () => {
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
   };
 
-  const tema = theme;
 
   return (
     <>
