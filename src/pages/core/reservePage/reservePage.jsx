@@ -8,23 +8,30 @@ import { DeleteIcon } from './icons/DeleteIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListReserves } from '../../../store/bibliotech/thunks';
 import { useNavigate } from 'react-router-dom';
+import { deleteReserve } from '../../../store/bibliotech/thunks';
 
 export const ReservePage = () => {
 
-  const { isSaving, reserves } = useSelector(state => state.bibliotech);
+  const { isSaving, isDeleting, reserves } = useSelector(state => state.bibliotech);
   const { uid } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!isSaving){
+    if (!isSaving) {
       dispatch(getListReserves(uid));
     }
 
-  }, [isSaving, uid]);
+  }, [isSaving, isDeleting , uid]);
 
-  const deleteReservation = ($event) => {
-    console.log($event);
+  
+  const viewDetailsOfBook = ({idBook}) => {
+    console.log(idBook);
+    navigate(`/book/${idBook}`);
+  }
+  
+  const deleteReservation = ({idFirebase}) => {
+    dispatch(deleteReserve(idFirebase));
   }
 
 
@@ -73,9 +80,14 @@ export const ReservePage = () => {
                 </TableCell>
                 <TableCell>
                   <div className="relative flex items-center justify-center gap-2">
+                    <Tooltip className='dark:text-white' content="Ver detalles del libro">
+                      <span className="text-lg cursor-pointer active:opacity-50">
+                        <EyeIcon onClick={() => viewDetailsOfBook(reserve)} />
+                      </span>
+                    </Tooltip>
                     <Tooltip color="danger" content="Devolver el libro">
                       <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                        <DeleteIcon onClick={() => deleteReservation(reserve)}/>
+                        <DeleteIcon onClick={() => deleteReservation(reserve)} />
                       </span>
                     </Tooltip>
                   </div>

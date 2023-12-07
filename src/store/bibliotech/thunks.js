@@ -1,6 +1,6 @@
 import { collection, deleteDoc, doc, getDocs, setDoc } from 'firebase/firestore/lite'
 
-import { deleteReserveById, endLoadingReserves, setReserves, startLoadingReserves } from "./bibliotechSlice";
+import { deleteReserveById, endDeletingReserve, endLoadingReserves, setReserves, startDeletingReserve, startLoadingReserves } from "./bibliotechSlice";
 import { FirebaseDB } from '../../firebase/config';
 
 
@@ -48,10 +48,13 @@ export const deleteReserve = (id) => {
   return async (dispatch, getState) => {
 
     const { uid } = getState().auth;
+    dispatch(startDeletingReserve());
 
     const docRef = doc(FirebaseDB, `${uid}/bibliotech/reserves/${id}`);
     await deleteDoc(docRef);
 
     dispatch(deleteReserveById(id));
+    dispatch(endDeletingReserve());
+
   }
 }
