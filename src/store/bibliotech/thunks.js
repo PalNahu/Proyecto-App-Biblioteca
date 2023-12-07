@@ -18,7 +18,7 @@ export const createReserve = () => {
       const setDocResp = await setDoc(newDoc, {
         idBook: bookById.id,
         volumeInfo: bookById.volumeInfo,
-        dateReservation: new Date(),
+        dateReservation: new Date().toLocaleString(),
       });
       dispatch(endLoadingReserves());
     }
@@ -26,11 +26,10 @@ export const createReserve = () => {
   }
 }
 
-export const getlistReserves = () => {
+export const getListReserves = (uid) => {
 
   return async (dispatch, getState) => {
 
-    const { uid } = getState().auth;
     const collectionRef = collection(FirebaseDB, `${uid}/bibliotech/reserves`);
     const docs = await getDocs(collectionRef);
 

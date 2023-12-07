@@ -69,13 +69,10 @@ export const BookPage = () => {
 			navigate('/search');
 		}
 
-
-
-
 		return (
 			<>
 				<div className="flex flex-row flex-wrap justify-center">
-					<div className='basis-4/6 flex flex-col flex-wrap gap-3'>
+					<div className='basis-6/6 flex flex-col flex-wrap gap-3'>
 						<div className="book-container dark:bg-black/20">
 
 
@@ -215,9 +212,9 @@ export const BookPage = () => {
 					</div>
 
 
-					<div className='basis-2/6'>
+					{/* <div className='basis-2/6'>
 						<SharedSectionCard direction='col'></SharedSectionCard>
-					</div>
+					</div> */}
 				</div >
 
 			</>

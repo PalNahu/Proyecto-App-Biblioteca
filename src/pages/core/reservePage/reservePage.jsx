@@ -3,66 +3,30 @@ import '../../global.css';
 import React, { useEffect } from 'react';
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue, CircularProgress } from "@nextui-org/react";
 
-import { columns, libros } from "./data";
 import { EyeIcon } from './icons/EyeIcon';
 import { DeleteIcon } from './icons/DeleteIcon';
 import { useDispatch, useSelector } from 'react-redux';
-import { getlistReserves } from '../../../store/bibliotech/thunks';
-
-const statusColorMap = {
-  activo: "success",
-  paused: "danger",
-  vacation: "warning",
-};
+import { getListReserves } from '../../../store/bibliotech/thunks';
+import { useNavigate } from 'react-router-dom';
 
 export const ReservePage = () => {
 
-  const { isSaving } = useSelector(state => state.bibliotech);
+  const { isSaving, reserves } = useSelector(state => state.bibliotech);
+  const { uid } = useSelector(state => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isSaving) {
-      dispatch(getlistReserves());
+    if(!isSaving){
+      dispatch(getListReserves(uid));
     }
-  }, [isSaving]);
 
+  }, [isSaving, uid]);
 
-  const renderCell = React.useCallback((libros, columnKey) => {
-    const cellValue = libros[columnKey];
+  const deleteReservation = ($event) => {
+    console.log($event);
+  }
 
-    switch (columnKey) {
-
-      case "fechaReserva":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-sm capitalize">{cellValue}</p>
-          </div>
-        );
-      case "Estado":
-        return (
-          <Chip className="capitalize" color={statusColorMap[libros.Estado]} size="sm" variant="flat">
-            {cellValue}
-          </Chip>
-        );
-      case "actions":
-        return (
-          <div className="relative flex items-center gap-2">
-            <Tooltip content="Detalles del libro">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EyeIcon />
-              </span>
-            </Tooltip>
-            <Tooltip color="danger" content="Devolver el libro">
-              <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon />
-              </span>
-            </Tooltip>
-          </div>
-        );
-      default:
-        return cellValue;
-    }
-  }, []);
 
   if (isSaving) {
     return <CircularProgress className='mt-24' aria-label="Loading..." />
@@ -71,33 +35,58 @@ export const ReservePage = () => {
   return (
     <>
       <Table aria-label>
-        <TableHeader columns={columns}>
-          {(column) => (
-            <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
-              <div className="text-center dark:text-white">
-                {column.name}
-              </div>
-            </TableColumn>
-          )}
+        <TableHeader>
+          <TableColumn align="start">
+            <div className="text-center dark:text-white">
+              Nombre de Libro
+            </div>
+          </TableColumn>
+          <TableColumn align="start">
+            <div className="text-center dark:text-white">
+              Fecha de reserva
+            </div>
+          </TableColumn>
+          <TableColumn align="start">
+            <div className="text-center dark:text-white">
+              Estado
+            </div>
+          </TableColumn>
+          <TableColumn align="start">
+            <div className="text-center dark:text-white">
+              Acciones
+            </div>
+          </TableColumn>
+
         </TableHeader>
-        <TableBody items={libros}>
-          {(item) => (
-            <TableRow key={item.id}>
-              {(columnKey) => (
-                <TableCell className="text-center dark:text-white">
-                  {columnKey === "actions" ? (
-                    <div className="flex justify-center">
-                      {renderCell(item, columnKey)}
-                    </div>
-                  ) : (
-                    renderCell(item, columnKey)
-                  )}
+
+        <TableBody items={reserves} emptyContent={"No se hicieron reservas aún.."}>
+
+          {
+            reserves.map((reserve, index) => (
+              <TableRow className='dark:text-white' key={index}>
+                <TableCell>{reserve.volumeInfo.title}</TableCell>
+                <TableCell>{reserve.dateReservation}</TableCell>
+                <TableCell>
+                  <Chip className="capitalize" color="success" size="sm" variant="flat">
+                    Activo
+                  </Chip>
                 </TableCell>
-              )}
-            </TableRow>
-          )}
+                <TableCell>
+                  <div className="relative flex items-center justify-center gap-2">
+                    <Tooltip color="danger" content="Devolver el libro">
+                      <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                        <DeleteIcon onClick={() => deleteReservation(reserve)}/>
+                      </span>
+                    </Tooltip>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))
+
+          }
+
         </TableBody>
-      </Table>
+      </Table >
     </>
   );
 }
