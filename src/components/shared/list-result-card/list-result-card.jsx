@@ -12,7 +12,7 @@ export const ListResultCard = ({ list, isLoading }) => {
       {
         (!isLoading)
           ? (
-            <div className='grid bg-white/20 dark:bg-black/20 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-x-10 gap-y-10'>
+            <div className='grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-x-10 gap-y-10'>
 
               {
                 list.map(({ id, volumeInfo }) => (
@@ -27,7 +27,7 @@ export const ListResultCard = ({ list, isLoading }) => {
               }
             </div>
           )
-          : <CircularProgress className='mt-24' aria-label="Loading..." />
+          : <CircularProgress className='mt-24 mb-24' aria-label="Loading..." />
       }
     </>
   )

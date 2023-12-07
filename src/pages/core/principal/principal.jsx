@@ -10,20 +10,13 @@ import { useNavigate } from 'react-router-dom';
 export const Principal = () => {
     const navigate = useNavigate();
     const isMobile = useMediaQuery('(max-width: 768px)');
-
-    const fadeInProps = useSpring({
-        opacity: 1,
-        from: { opacity: 0 },
-        config: { duration: 300 },
-    });
-
     const navigateSearch = () => {
         navigate('/search')
     }
 
     return (
         <>
-            <animated.div className="header-container dark:bg-black/20 px-[2rem] " style={fadeInProps} >
+            <div className="header-container dark:bg-black/20 px-[2rem] ">
 
                 <div className="flex flex-row">
                     <div className="flex flex-col justify-center xl:basis-7/12 lg:basis-9/12 md:basis-12/12 ">
@@ -49,9 +42,9 @@ export const Principal = () => {
                     }
 
                 </div>
-            </animated.div>
+            </div>
 
-            <animated.div className="flex flex-row flex-wrap justify-center gap-5 mt-20 mb-28 section2 dark:text-white " style={fadeInProps}>
+            <div className="flex flex-row flex-wrap justify-center gap-5 mt-20 mb-28 section2 dark:text-white ">
                 <div className="basis-1/7 flex flex-col justify-between w-64 dark:text-white ">
                     <div className='p-1'>
                         <div className='title-principal-content dark:text-white '>
@@ -67,7 +60,7 @@ export const Principal = () => {
                         className='m-auto w-2/3'
                         onClick={navigateSearch}
                     >
-                        Seguir buscando
+                        Empieza a reservar
                     </Button>
 
                 </div>
@@ -113,9 +106,9 @@ export const Principal = () => {
                         />
                     </Card>
                 </div>
-            </animated.div>
+            </div>
 
-            <animated.div className='flex flex-col item-center mt-32 mb-24 aboutus dark:text-white' style={fadeInProps}>
+            <div className='flex flex-col item-center mt-32 mb-24 aboutus dark:text-white'>
                 <div className='mb-8'>
 
                     <div className='title-principal-content dark:text-white'>
@@ -129,7 +122,21 @@ export const Principal = () => {
 
                 <div className='flex flex-row flex-wrap gap-y-8 justify-center dark:text-white'>         
                     <div className="basis-1/3 flex flex-col p-4 items-center text-center">
-                        <svg className="w-[3rem] h-[3rem] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                        <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 8v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0Zm12 7h-1v1a1 1 0 0 1-2 0v-1H8a1 1 0 0 1 0-2h1v-1a1 1 0 1 1 2 0v1h1a1 1 0 0 1 0 2Z" />
+                        </svg>
+
+
+                        <div className='title-principal-content dark:text-white'>
+                            Reservas más duraderas.
+                        </div>
+
+                        <div className='subtitle-principal-content dark:text-white'>
+                            Ofrecemos entre 4-5 meses de prestaciones de libro con posiblidad de ampliar el mismo hasta 5 veces.
+                        </div>
+                    </div>
+                    <div className="basis-1/3 flex flex-col p-4 items-center text-center">
+                        <svg class="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                             <path d="M18 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3.546l3.2 3.659a1 1 0 0 0 1.506 0L13.454 14H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-8 10H5a1 1 0 0 1 0-2h5a1 1 0 1 1 0 2Zm5-4H5a1 1 0 0 1 0-2h10a1 1 0 1 1 0 2Z" />
                         </svg>
 
@@ -142,20 +149,9 @@ export const Principal = () => {
                         </div>
                     </div>
                     <div className="basis-1/3 flex flex-col p-4 items-center text-center">
-                        <svg className="w-[3rem] h-[3rem] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 8v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0Zm12 7h-1v1a1 1 0 0 1-2 0v-1H8a1 1 0 0 1 0-2h1v-1a1 1 0 1 1 2 0v1h1a1 1 0 0 1 0 2Z" />
-                        </svg>
 
-                        <div className='title-principal-content dark:text-white'>
-                            Reservas más duraderas.
-                        </div>
+                        <svg className="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
 
-                        <div className='subtitle-principal-content dark:text-white'>
-                            Ofrecemos entre 4-5 meses de prestaciones de libro con posiblidad de ampliar el mismo hasta 5 veces.
-                        </div>
-                    </div>
-                    <div className="basis-1/3 flex flex-col p-4 items-center text-center">
-                        <svg className="w-[3rem] h-[3rem] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
                             <path d="M16 14V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 0 0 0-2h-1v-2a2 2 0 0 0 2-2ZM4 2h2v12H4V2Zm8 16H3a1 1 0 0 1 0-2h9v2Z" />
                         </svg>
 
@@ -169,7 +165,7 @@ export const Principal = () => {
                     </div>
                 </div>
 
-            </animated.div>
+            </div>
 
         </>
     )

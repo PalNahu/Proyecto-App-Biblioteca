@@ -81,6 +81,8 @@ export const Register = () => {
               onChange={onInputChange}
               isInvalid={!!passwordValid && formSubmitted}
               errorMessage={(formSubmitted) ? passwordValid : ''}
+              description="Nunca compartiremos sus datos con nadie."
+
             />
 
             <div className='form-component dark:text-white'>

@@ -5,13 +5,9 @@ import backgroundImageDark from '../../../assets/background-dark.png'
 
 export const SharedToggleDarkmode = () => {
 
-  const [theme, setTheme] = useState(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "light";
-    }
-
-    return "dark";
-  });
+  const prevTheme = localStorage.getItem('theme');
+  const initialTheme = prevTheme ? prevTheme : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const [theme, setTheme] = useState(initialTheme);
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -35,14 +31,17 @@ export const SharedToggleDarkmode = () => {
   }, [theme]);
 
   const handleChangeTheme = () => {
-    setTheme((theme) => (theme === "light" ? "dark" : "light"));
+    setTheme((currentTheme) => {
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      localStorage.setItem('theme', newTheme);
+      return newTheme;
+    });
   };
-
 
   return (
     <>
         <label className="theme-switch" >
-          <input type="checkbox" className="theme-switch__checkbox" onClick={handleChangeTheme}></input>
+          <input type="checkbox" className="theme-switch__checkbox"  checked={theme === 'dark'} onChange={handleChangeTheme}></input>
           <div className="theme-switch__container">
             <div className="theme-switch__clouds"></div>
             <div className="theme-switch__stars-container">
