@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const bookSlice = createSlice({
   //nombre del slice con el que se vincula al store
-  name: 'name',
+  name: 'books',
   //declaracion del estado inicial de las variables
   initialState: {
     books: [],

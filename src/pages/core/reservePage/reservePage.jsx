@@ -1,10 +1,12 @@
 import './ReservePage.css'
 import '../../global.css';
 import React from 'react';
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue } from "@nextui-org/react";
-import { DeleteIcon } from "./DeleteIcon";
-import { EyeIcon } from "./EyeIcon";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue, CircularProgress } from "@nextui-org/react";
+
 import { columns, libros } from "./data";
+import { EyeIcon } from './icons/EyeIcon';
+import { DeleteIcon } from './icons/DeleteIcon';
+import { useSelector } from 'react-redux';
 
 const statusColorMap = {
     activo: "success",
@@ -13,6 +15,9 @@ const statusColorMap = {
 };
 
 export const ReservePage = () => {
+
+    const { isSaving } = useSelector(state => state.bibliotech)
+
     const renderCell = React.useCallback((libros, columnKey) => {
         const cellValue = libros[columnKey];
 
@@ -49,6 +54,10 @@ export const ReservePage = () => {
                 return cellValue;
         }
     }, []);
+
+    if(isSaving){
+       return  <CircularProgress className='mt-24' aria-label="Loading..." />
+    }
 
     return (
         <>
