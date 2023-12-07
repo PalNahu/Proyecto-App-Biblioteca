@@ -29,7 +29,7 @@ export const SharedNavbar = () => {
   const { status, displayName, photoUrl } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const location = useLocation();
-  const isMobile = useMediaQuery('(max-width: 840px)');
+  const isMobile = useMediaQuery('(max-width: 840px)'); 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   useEffect(() => {
