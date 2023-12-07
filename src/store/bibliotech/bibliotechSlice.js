@@ -14,10 +14,15 @@ export const bibliotechSlice = createSlice({
       state.isSaving = true;
     },
     setReserves: (state, action) => {
-      state.isSaving = false;
-      state.reserves = action.payload.reserves;
+      state.reserves = action.payload.list;
     },
+    endLoadingReserves: (state) => {
+      state.isSaving = false;
+    },
+    deleteReserveById: (state, action) =>{
+      state.reserves = state.reserves.filter(reserve => reserve.id !== action.payload);
+    }
   }
 });
 
-export const { startLoadingReserves, setReserves } = bibliotechSlice.actions;
+export const { startLoadingReserves, setReserves, endLoadingReserves, deleteReserveById } = bibliotechSlice.actions;

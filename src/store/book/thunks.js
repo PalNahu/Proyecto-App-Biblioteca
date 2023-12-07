@@ -11,8 +11,6 @@ export const getBooks = (query, maxResults = 40) => {
 
       const resp = await fetch(`https://www.googleapis.com/books/v1/volumes?printType=books&q=${query}&maxResults=${maxResults}`);
       const data = await resp.json();
-      
-      console.log(data.items);
 
       dispatch(setBooks({books: data.items}));
     }
@@ -26,8 +24,6 @@ export const getBookById = (id) => {
 
     const resp = await fetch(`https://www.googleapis.com/books/v1/volumes/${id}?key=${import.meta.env.VITE_REACT_APP_API_KEY}`);
     const data = await resp.json();
-    
-    console.log(data);
 
     dispatch(setBookById({book: data}));
   }
