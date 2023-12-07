@@ -16,6 +16,12 @@ export const SharedSearchBar = ({ variant = 'flat', callbackWithValues }) => {
 
   }
 
+  const handleKeyDown = (event) =>{
+    if (event.key === 'Enter'){
+      searchContent();
+    }
+  }
+
   useEffect(() => {
     if (callbackWithValues) {
       callbackWithValues({ isLoading, books });
@@ -33,6 +39,7 @@ export const SharedSearchBar = ({ variant = 'flat', callbackWithValues }) => {
           placeholder="Search"
           value={searchValue}
           onValueChange={setSearchValue}
+          onKeyDown={handleKeyDown}
           endContent={
             <Button isIconOnly onClick={searchContent} color="primary" >
                 <svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">

@@ -19,13 +19,17 @@ export const SharedNavbar = () => {
     {
       path: '/search',
       description: 'Reserva tus libros'
+    },
+    {
+      path: '/reserves',
+      description: 'Mis Reservas'
     }
   ];
 
   const { status, displayName, photoUrl } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const location = useLocation();
-  const isMobile = useMediaQuery('(max-width: 640px)');
+  const isMobile = useMediaQuery('(max-width: 840px)'); 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   useEffect(() => {
